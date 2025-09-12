@@ -53,7 +53,7 @@ Triply is a full-stack travel planning app that helps users organize trips with 
                 - username -> VARCHAR (100) (NN)
                 - email -> VARCHAR (100) (NN) (UQ)
                 - password -> VARCHAR (100) (NN)
-    - Itineraries:
+    - itineraries (if it doesn't work try Itineraries and restart server):
           Columns:
                 - id -> INT (PRIMARY) (NN) (AI)
                 - title -> VARCHAR (100) (NN)
