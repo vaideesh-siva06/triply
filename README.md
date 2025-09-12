@@ -12,7 +12,7 @@ Triply is a full-stack travel planning app that helps users organize trips with 
 
 ## Setup:
 
-### In client folder:
+### In client/triply folder:
       - npm install
       - npm i axios
       - create a .env file and use env.example in the client folder to set VITE_GEMINI_API_KEY=your_gemini_api_key
