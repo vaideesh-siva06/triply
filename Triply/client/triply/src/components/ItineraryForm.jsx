@@ -128,17 +128,18 @@ export default function ItineraryForm({
   }, [debouncedQuery]);
 
     const handleSelect = (idx, place) => {
-        const newLocations = [...locations];
+      const newLocations = [...locations];
+      newLocations[idx] = place.fullName;
+      setLocations(newLocations);
 
-        // Store the selected place as-is (with original casing)
-        newLocations[idx] = place.fullName;
-        setLocations(newLocations);
-
-        // Clear suggestions and query
-        setSuggestions((prev) => ({ ...prev, [idx]: [] }));
-        setQuery((prev) => ({ ...prev, [idx]: "" }));
-        setDebouncedQuery((prev) => ({ ...prev, [idx]: "" }));
+      // clear query so dropdown closes immediately
+      setQuery((prev) => ({ ...prev, [idx]: "" }));
+      setSuggestions((prev) => ({ ...prev, [idx]: [] }));
+      setDebouncedQuery((prev) => ({ ...prev, [idx]: "" }));
     };
+
+
+
 
 
     const buildPromptFromForm = () => {
@@ -254,7 +255,7 @@ export default function ItineraryForm({
 
             <input
               type="text"
-              value={query[idx] || loc || ""}
+              value={query[idx] || locations[idx] || ""}
               onChange={(e) => {
                 const inputValue = e.target.value;
                 setQuery((prev) => ({ ...prev, [idx]: inputValue }));
@@ -268,8 +269,9 @@ export default function ItineraryForm({
                 );
                 setSuggestions((prev) => ({ ...prev, [idx]: filtered }));
               }}
-              className="w-full border p-2 rounded pl-8 pr-8 mt-4" // pl-8 for icon, pr-8 for remove button
+              className="w-full border p-2 rounded pl-8 pr-8 mt-4"
             />
+
 
             {/* Remove location button */}
             {locations.length > 1 && (
@@ -288,19 +290,13 @@ export default function ItineraryForm({
             {suggestions[idx] && suggestions[idx].length > 0 && (
               <ul className="absolute top-full left-0 z-10 w-full bg-white border border-gray-300 mt-1 rounded-lg max-h-40 overflow-y-auto shadow-lg">
                 {suggestions[idx].map((place) => (
-                  <li
-                    key={place.id}
-                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => {
-                      const newLocations = [...locations];
-                      newLocations[idx] = place.fullName;
-                      setLocations(newLocations);
-                      setQuery((prev) => ({ ...prev, [idx]: "" }));
-                      setSuggestions((prev) => ({ ...prev, [idx]: [] }));
-                    }}
-                  >
-                    {place.fullName}
-                  </li>
+                 <li
+                  key={place.id}
+                  className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => handleSelect(idx, place)}
+                >
+                  {place.fullName}
+                </li>
                 ))}
               </ul>
             )}
