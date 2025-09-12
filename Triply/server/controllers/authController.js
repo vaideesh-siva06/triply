@@ -86,3 +86,35 @@ export const deleteUser = async (req, res) => {
     res.status(500).json({ error: "Failed to delete user account" });
   }
 }
+
+export const updateUser = async (req, res) => {
+    try {
+      const { id } = req.params; 
+      const { username, email } = req.body;
+
+      if (!username || !email) {
+        return res.status(400).json({ error: "Username and email are required" });
+      }
+
+      const [existing] = await db
+        .promise()
+        .query("SELECT id FROM users WHERE email = ? AND id != ?", [email, id]);
+
+      if (existing.length > 0) {
+        return res.status(400).json({ error: "Email is already in use" });
+      }
+
+      const [result] = await db
+        .promise()
+        .query("UPDATE users SET username = ?, email = ? WHERE id = ?", [username, email, id]);
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      res.status(200).json({ message: "User updated successfully" });
+    } catch (err) {
+      console.error("Error updating user:", err);
+      res.status(500).json({ error: "Failed to update user" });
+    }
+}
