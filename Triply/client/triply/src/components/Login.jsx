@@ -13,6 +13,7 @@ function Login() {
         useEffect(() => {
                 AOS.init({ duration: 800, once: true });
                 document.title = "Login";
+                setErrors({});
         }, []);
 
         useEffect(() => {
