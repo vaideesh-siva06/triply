@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+button {
+    cursor: pointer;
+}
+
+input[type="date"] {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  -moz-text-fill-color: #000 !important;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #000 !important;
+}
+
+/* placeholders / vendor fallbacks */
+input[type="date"]::placeholder,
+input[type="date"]::-webkit-input-placeholder,
+input[type="date"]::-ms-input-placeholder {
+  color: #000 !important;
+}
