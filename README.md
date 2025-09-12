@@ -19,6 +19,8 @@ Triply is a full-stack travel planning app that helps users organize trips with 
 
       - To run client: npm run dev --> make sure it points to http://localhost:5173/
 
+      * If any errors with server make sure to check lsof -i:5173 to see if there are two nodes running. If so, type in command kill -9 <PID> and restart server with npm run dev.
+
 ### In server folder:
       - npm install
       - npm i express cors dotenv bcrypt mysql2 jsonwebtoken cookie-parser
@@ -31,6 +33,8 @@ Triply is a full-stack travel planning app that helps users organize trips with 
               DB_NAME=your-db-name
               
       - To run server: npm run dev --> make sure it points to http://localhost:5001/
+
+      * If any errors with server make sure to check lsof -i:5001 to see if there are two nodes running. If so, type in command kill -9 <PID> and restart server with npm run dev.
 
 # MySQLWorkbench
     - Create a SQL Project with the host as localhost, user as root, and leave password empty
