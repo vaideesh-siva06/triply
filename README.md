@@ -41,7 +41,7 @@ Triply is a full-stack travel planning app that helps users organize trips with 
  * If any errors at all and are stuck on Loading... page, please make sure to run lsof -i:5001 and then kill -9 <PID of 5001> and if that doesn't work make sure to run lsof -i:5173 and then kill -9 <PID of 5173>. Then, re-run both the server and the client in their folders with npm run dev.
    
 # MySQLWorkbench
-      (SQL File Uploaded in GitHub, so use that file instead of setting it up from scratch)
+      (SQL File Uploaded in GitHub, so use that file instead of setting it up from scratch. Just upload the file in SQL Workbench and connect it to project.)
       
     - Create a SQL Project with the host as localhost, user as root, and leave password empty
     - If you do use the 'sys' default given by SQL, you may leave the database parameter in mysql.createPool as is. If you do not use the same database, please change the name accordingly.
