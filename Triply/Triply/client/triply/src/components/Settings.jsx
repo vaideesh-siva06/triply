@@ -71,7 +71,6 @@ function Settings({ setIsAuthenticated }) {
         email
       }, {withCredentials: true});
 
-      alert(response.data.message);
       setUser({ ...user, username, email });
       setPrevEmail(email);
       setPrevUser(username);
@@ -82,7 +81,6 @@ function Settings({ setIsAuthenticated }) {
 
       if (err.response?.data?.error) {
         alert(err.response.data.error);
-        setEmail(prevEmail);
       } else {
         alert("Failed to update user info. Please try again.");
       }
