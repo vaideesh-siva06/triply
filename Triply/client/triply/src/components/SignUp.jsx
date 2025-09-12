@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 
 function Signup() {
 
-  const { handleSubmit, handleInput, errors, success, setSuccess } = useContext(SubmitContext);
+  const { handleSubmit, handleInput, errors, success, setSuccess, setErrors } = useContext(SubmitContext);
   const [showBanner, setShowBanner] = useState(false);
   const [fadeState, setFadeState] = useState(''); // '' | 'up' | 'down'
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +26,7 @@ function Signup() {
     useEffect(() => {
         AOS.init({ duration: 800, once: true });
         document.title = "Sign Up";
+        setErrors({});
     }, []);
 
     useEffect(() => {
