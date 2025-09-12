@@ -17,6 +17,10 @@ function SubmitProvider({ children, setIsAuthenticated }) {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
 
+  useEffect(() => {
+    setErrors({});
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -69,7 +73,7 @@ function SubmitProvider({ children, setIsAuthenticated }) {
   }
 
   return (
-    <SubmitContext.Provider value={{ handleSubmit, values, setValues, handleInput, errors, success, setSuccess }}>
+    <SubmitContext.Provider value={{ handleSubmit, values, setValues, handleInput, errors, success, setSuccess, setErrors }}>
       {children}
     </SubmitContext.Provider>
   )
