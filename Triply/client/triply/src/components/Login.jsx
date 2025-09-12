@@ -6,7 +6,7 @@ import { SubmitContext } from '../context/SubmitProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function Login() {
-        const { handleSubmit, values, setValues, handleInput, errors, success } = useContext(SubmitContext);
+        const { handleSubmit, values, setValues, handleInput, errors, success, setErrors } = useContext(SubmitContext);
         const navigate = useNavigate();
         const [showPassword, setShowPassword] = useState(false);
 
