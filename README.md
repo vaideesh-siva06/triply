@@ -38,7 +38,7 @@ Triply is a full-stack travel planning app that helps users organize trips with 
 
       * If any errors with server make sure to check lsof -i:5001 to see if there are two nodes running. If so, type in command kill -9 <PID> and restart server with npm run dev.
 
- * If any errors at all and are stuck on Loading... page, please make sure to run lsof -i:5001 and then kill -9 <PID of 5001> and if that doesn't work make sure to run lsof -i:5173 and then kill -9 <PID of 5173>.
+ * If any errors at all and are stuck on Loading... page, please make sure to run lsof -i:5001 and then kill -9 <PID of 5001> and if that doesn't work make sure to run lsof -i:5173 and then kill -9 <PID of 5173>. Then, re-run both the server and the client in their folders with npm run dev.
    
 # MySQLWorkbench
     - Create a SQL Project with the host as localhost, user as root, and leave password empty
