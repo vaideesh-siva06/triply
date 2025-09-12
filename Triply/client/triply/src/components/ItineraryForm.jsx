@@ -30,7 +30,7 @@ export default function ItineraryForm({
   const [debouncedQuery, setDebouncedQuery] = useState({});
   const [loading, setLoading] = useState(false);
   const [showDownload, setShowDownload] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const genAI = new GoogleGenerativeAI(apiKey);
 
 
@@ -42,8 +42,6 @@ export default function ItineraryForm({
         return;
       }
     } else {
-      console.log("SUGGESTIONS OFF!");
-      console.log(locations);
       // Suggestions off: only require that each location has some text
       if (!title || locations.filter(loc => loc.trim()).length === 0 || !startDate || !endDate || !aiPrompt) {
         alert("Please fill out all required fields before generating AI suggestions off.");
@@ -140,8 +138,8 @@ export default function ItineraryForm({
       const newLocations = [...locations];
       newLocations[idx] = place.fullName;
       setLocations(newLocations);
+      console.log("LOCATION SET!");
 
-      // clear query so dropdown closes immediately
       setQuery((prev) => ({ ...prev, [idx]: "" }));
       setSuggestions((prev) => ({ ...prev, [idx]: [] }));
       setDebouncedQuery((prev) => ({ ...prev, [idx]: "" }));
@@ -278,6 +276,7 @@ export default function ItineraryForm({
           </label>
         </div>
 
+        
 
        {/* Locations */}
         <div>
@@ -288,7 +287,7 @@ export default function ItineraryForm({
 
               <input
                 type="text"
-                value={query[idx] ?? locations[idx] ?? ""}
+                value={locations[idx] || ""}
                 onChange={(e) => {
                   const inputValue = e.target.value;
 
@@ -300,12 +299,10 @@ export default function ItineraryForm({
                   newLocations[idx] = inputValue;
                   setLocations(newLocations);
 
+                  // If suggestions are off, clear them
                   if (!showSuggestions) {
                     setSuggestions((prev) => ({ ...prev, [idx]: [] }));
-                    return;
                   }
-
-                  // Fetch suggestions logic here if showSuggestions is true
                 }}
                 className="w-full border p-2 rounded pl-8 pr-8 mt-4"
               />
