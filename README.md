@@ -17,6 +17,8 @@ Triply is a full-stack travel planning app that helps users organize trips with 
       - npm i axios
       - create a .env file and use env.example in the client folder to set VITE_GEMINI_API_KEY=your_gemini_api_key
 
+      - To run client: npm run dev --> make sure it points to http://localhost:5173/
+
 ### In server folder:
       - npm install
       - npm i express cors dotenv bcrypt mysql2 jsonwebtoken cookie-parser
@@ -26,6 +28,8 @@ Triply is a full-stack travel planning app that helps users organize trips with 
               DB_USER=your-db-user
               JWT_SECRET=your-local-jwt-secret (can keep as is)
               DB_NAME=your-db-name
+              
+      - To run server: npm run dev --> make sure it points to http://localhost:5001/
 
 # MySQLWorkbench
     - Create a SQL Project with the host as localhost, user as root, and leave password empty
