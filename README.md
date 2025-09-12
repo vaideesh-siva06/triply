@@ -23,6 +23,7 @@ Triply is a full-stack travel planning app that helps users organize trips with 
       - npm install
       - npm i express cors dotenv bcrypt mysql2 jsonwebtoken cookie-parser
       - create a .env file and use env.example in the server folder to set:
+              * (Check db.js and see the hardcoded values there, and set up a MySQL Workbench if you want to use the same values)
               PORT=5001
               DB_HOST=your-host-name
               DB_USER=your-db-user
