@@ -42,6 +42,6 @@ Triply is a full-stack travel planning app that helps users organize trips with 
    
 # MySQLWorkbench
     - Create a SQL Project with the host as localhost, user as root, and leave password empty
-    - If you do use the 'sys' default given by SQL, you may leave the database parameter in mysql.createPool as is. If you do not use teh same database, please change the name accordingly.
+    - If you do use the 'sys' default given by SQL, you may leave the database parameter in mysql.createPool as is. If you do not use the same database, please change the name accordingly.
     
 
