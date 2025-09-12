@@ -107,20 +107,16 @@ const ItineraryPDF = ({ itinerary = {}, aiSuggestions = [] }) => {
 
         {/* Excursions */}
         <View style={styles.section}>
-            <Text style={styles.subtitle}>Excursions</Text>
-            {excursions.some(exc => parseMarkdownToPdfText(exc)?.trim())
-                ? excursions.map((exc, idx) => {
-                    const parsed = parseMarkdownToPdfText(exc)?.trim();
-                    return parsed ? (
-                    <Text key={idx} style={styles.bullet}>
-                        • {parsed}
-                    </Text>
-                    ) : null;
-                })
-                : <Text style={styles.text}>N/A</Text>
-            }
-            </View>
-
+          <Text style={styles.subtitle}>Excursions</Text>
+          {excursions.some(exc => exc?.trim())
+              ? excursions.map((exc, idx) => (
+                  <Text key={idx} style={styles.bullet}>
+                    • {parseMarkdownToPdfText(exc)}
+                  </Text>
+                ))
+              : <Text style={styles.text}>N/A</Text>
+          }
+        </View>
 
         {/* Dates, Travelers, Budget (Two-column layout) */}
         <View style={styles.section}>
